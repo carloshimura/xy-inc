@@ -1,0 +1,81 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from POIManagerService WSDL service -->
+
+  <service name="POIManager" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://data.xy_poi.org"/>
+      <parameter name="wsdlServiceElement" value="POIManagerService"/>
+      <parameter name="schemaQualified" value="http://data.xy_poi.org"/>
+      <parameter name="wsdlServicePort" value="POIManager"/>
+      <parameter name="className" value="org.xy_poi.data.POIManagerSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="POIManager"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="insertPOI" qname="operNS:insertPOI" xmlns:operNS="http://data.xy_poi.org" soapAction="" >
+        <parameter qname="pns:poi" xmlns:pns="http://data.xy_poi.org" type="tns:POI" xmlns:tns="http://data.xy_poi.org"/>
+      </operation>
+      <operation name="getPOIs" qname="operNS:getPOIs" xmlns:operNS="http://data.xy_poi.org" returnQName="retNS:getPOIsReturn" xmlns:retNS="http://data.xy_poi.org" returnType="rtns:ArrayOf_xsd_anyType" xmlns:rtns="http://data.xy_poi.org" returnItemQName="tns:item" xmlns:tns="http://data.xy_poi.org" soapAction="" >
+        <parameter qname="pns:x" xmlns:pns="http://data.xy_poi.org" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:y" xmlns:pns="http://data.xy_poi.org" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:max_distance" xmlns:pns="http://data.xy_poi.org" type="tns:double" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="getPOIs insertPOI"/>
+
+      <typeMapping
+        xmlns:ns="http://data.xy_poi.org"
+        qname="ns:>getPOIs"
+        type="java:org.xy_poi.data.GetPOIs"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://data.xy_poi.org"
+        qname="ns:POI"
+        type="java:org.xy_poi.data.POI"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://data.xy_poi.org"
+        qname="ns:>getPOIsResponse"
+        type="java:org.xy_poi.data.GetPOIsResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://data.xy_poi.org"
+        qname="ns:>insertPOI"
+        type="java:org.xy_poi.data.InsertPOI"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://data.xy_poi.org"
+        qname="ns:>insertPOIResponse"
+        type="java:org.xy_poi.data.InsertPOIResponse"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <arrayMapping
+        xmlns:ns="http://data.xy_poi.org"
+        qname="ns:ArrayOf_xsd_anyType"
+        type="java:java.lang.Object[]"
+        innerType="cmp-ns:anyType" xmlns:cmp-ns="http://www.w3.org/2001/XMLSchema"
+        encodingStyle=""
+      />
+  </service>
+</deployment>
