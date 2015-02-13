@@ -14,7 +14,21 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     </complexType>
    </element>
    <element name="insertPOIResponse">
+    <complexType>
+     <sequence>
+      <element name="insertPOIReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllPOIs">
     <complexType/>
+   </element>
+   <element name="getAllPOIsResponse">
+    <complexType>
+     <sequence>
+      <element name="getAllPOIsReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
    </element>
    <element name="getNearestPOIs">
     <complexType>
@@ -29,16 +43,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
     <complexType>
      <sequence>
       <element name="getNearestPOIsReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="getAllPOIs">
-    <complexType/>
-   </element>
-   <element name="getAllPOIsResponse">
-    <complexType>
-     <sequence>
-      <element name="getAllPOIsReturn" type="xsd:string"/>
      </sequence>
     </complexType>
    </element>
@@ -77,17 +81,17 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
    </wsdl:message>
 
-   <wsdl:message name="getAllPOIsResponse">
+   <wsdl:message name="getNearestPOIsRequest">
 
-      <wsdl:part element="impl:getAllPOIsResponse" name="parameters">
+      <wsdl:part element="impl:getNearestPOIs" name="parameters">
 
       </wsdl:part>
 
    </wsdl:message>
 
-   <wsdl:message name="getNearestPOIsRequest">
+   <wsdl:message name="getAllPOIsResponse">
 
-      <wsdl:part element="impl:getNearestPOIs" name="parameters">
+      <wsdl:part element="impl:getAllPOIsResponse" name="parameters">
 
       </wsdl:part>
 
@@ -107,18 +111,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getNearestPOIs">
-
-         <wsdl:input message="impl:getNearestPOIsRequest" name="getNearestPOIsRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:getNearestPOIsResponse" name="getNearestPOIsResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="getAllPOIs">
 
          <wsdl:input message="impl:getAllPOIsRequest" name="getAllPOIsRequest">
@@ -126,6 +118,18 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
        </wsdl:input>
 
          <wsdl:output message="impl:getAllPOIsResponse" name="getAllPOIsResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getNearestPOIs">
+
+         <wsdl:input message="impl:getNearestPOIsRequest" name="getNearestPOIsRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getNearestPOIsResponse" name="getNearestPOIsResponse">
 
        </wsdl:output>
 
@@ -155,24 +159,6 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
 
       </wsdl:operation>
 
-      <wsdl:operation name="getNearestPOIs">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="getNearestPOIsRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="getNearestPOIsResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
       <wsdl:operation name="getAllPOIs">
 
          <wsdlsoap:operation soapAction=""/>
@@ -184,6 +170,24 @@ Built on Apr 22, 2006 (06:55:48 PDT)-->
          </wsdl:input>
 
          <wsdl:output name="getAllPOIsResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getNearestPOIs">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getNearestPOIsRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getNearestPOIsResponse">
 
             <wsdlsoap:body use="literal"/>
 

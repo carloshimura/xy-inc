@@ -21,6 +21,9 @@ public class POIDatabaseAcess {
 	
 	private SessionFactory m_sessionFactory;
 	
+	/**
+	 * Construtor, inicia as variáveis para gerencialmento de sessões com o banco de dados
+	 */
 	public POIDatabaseAcess()
 	{
 		Configuration configuration = new Configuration();
@@ -31,6 +34,10 @@ public class POIDatabaseAcess {
 		m_sessionFactory = new Configuration().configure().buildSessionFactory(serviceRegistry);
 	}
 	
+	/**
+	 * insere um POI
+	 * @param poi poi a ser inserido
+	 */
 	public void insertPoi(POI poi)
 	{
 		Session session = m_sessionFactory.openSession();
@@ -47,6 +54,10 @@ public class POIDatabaseAcess {
 		}
 	}
 	
+	/**
+	 * retorna todos os POIs do banco de dados
+	 * @return POIs do banco de dados
+	 */
 	@SuppressWarnings("unchecked")
 	public List<POI> getAllPOIs() {
 		Session session = m_sessionFactory.openSession();

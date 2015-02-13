@@ -20,17 +20,17 @@
       <parameter name="className" value="org.xy_poi.POIMainSoapBindingImpl"/>
       <parameter name="wsdlPortType" value="POIMain"/>
       <parameter name="typeMappingVersion" value="1.2"/>
-      <operation name="insertPOI" qname="operNS:insertPOI" xmlns:operNS="http://xy_poi.org" soapAction="" >
+      <operation name="insertPOI" qname="operNS:insertPOI" xmlns:operNS="http://xy_poi.org" returnQName="retNS:insertPOIReturn" xmlns:retNS="http://xy_poi.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:name" xmlns:pns="http://xy_poi.org" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:x" xmlns:pns="http://xy_poi.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:y" xmlns:pns="http://xy_poi.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="getAllPOIs" qname="operNS:getAllPOIs" xmlns:operNS="http://xy_poi.org" returnQName="retNS:getAllPOIsReturn" xmlns:retNS="http://xy_poi.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
       </operation>
       <operation name="getNearestPOIs" qname="operNS:getNearestPOIs" xmlns:operNS="http://xy_poi.org" returnQName="retNS:getNearestPOIsReturn" xmlns:retNS="http://xy_poi.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
         <parameter qname="pns:x" xmlns:pns="http://xy_poi.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:y" xmlns:pns="http://xy_poi.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
         <parameter qname="pns:max_dist" xmlns:pns="http://xy_poi.org" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
-      </operation>
-      <operation name="getAllPOIs" qname="operNS:getAllPOIs" xmlns:operNS="http://xy_poi.org" returnQName="retNS:getAllPOIsReturn" xmlns:retNS="http://xy_poi.org" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
       </operation>
       <parameter name="allowedMethods" value="getAllPOIs insertPOI getNearestPOIs"/>
 
